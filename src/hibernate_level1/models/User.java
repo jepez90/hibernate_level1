@@ -57,6 +57,8 @@ public class User implements Serializable {
     }
 
     public void setPassword(String password) {
+        this.setOldPassword(getPassword());
+        this.setLastPassChange(LocalDateTime.now());
         this.password = password;
     }
 
@@ -90,7 +92,7 @@ public class User implements Serializable {
     }
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
